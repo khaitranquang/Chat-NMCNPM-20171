@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Socket IO - NMCNPM - 20171</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="home">
+        <div id="loginForm">
+            <h1>Welcome to Chat Room - Project NMCNMP - 20171</h1>
+            <h5>Web version 1.0.0</h5><br>
+            <h3>What is your account???</h3>
+            <input type="text" id="txtUsername"><br>
+            <input type="password" id="txtPassword"><br>
+            <input type="button" value="LOGIN" id="btnLogin">
+        </div>
+
+        <div id="chatForm">
+            <div id = "left">
+                <div id="boxTitle">
+                    <b>Recent Users</b>
+                </div>
+                <div id="listRecentUsers">
+                    <li>Tran Quang Khai</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+                    <li>Mai Tien Dung</li>
+
+                </div>
+
+
+            </div>
+
+            <div id="right">
+                <div id = "sayHello">
+                    Hello <span id="currentUser"> Tran Quang Khai  </span>
+                    <input id="btnLogout" value="LOGOUT" type="button">
+                </div>
+
+                <div id="listMessages">
+
+                </div>
+
+                <div id="status">
+                        ***********************************
+                </div>
+                <div id="typeArea">
+                        <input id="inputMessages" type="text" maxlength="200" placeholder="Type here...">
+                        <!--<input id="btnSend" type="button" value="SEND">-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
