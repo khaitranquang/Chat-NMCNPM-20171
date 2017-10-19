@@ -1,3 +1,4 @@
+
 /**
  * Created by Tran Quang Khai on 10/6/2017.
  */
@@ -43,19 +44,6 @@ io.on("connection", function (socket) {
         // Broadcast
         socket.broadcast.emit("server-send-list-users", users);
     });
-
-    socket.on("user-send-message", function (data) {
-        io.sockets.emit("server-send-message", {"username":socket.username, "mess":data});
-    });
-
-    // socket.on("i-am-typing", function () {
-    //     var s = "...is typing";
-    //     socket.broadcast.emit("server-send-who-is-typing", s);
-    // });
-    //
-    // socket.on("stop-typing", function () {
-    //     socket.broadcast.emit("server-send-who-is-typing");
-    // })
 });
 
 
