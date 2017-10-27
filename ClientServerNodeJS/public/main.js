@@ -24,6 +24,21 @@ socket.on("server-send-list-users", function (data) {
 
 });
 
+// Listen server send message
+socket.on("server-send-message", function (data) {
+    $("#listMessages").append("<div class='message'>" + data.username+ " :" + data.mess);
+});
+
+// Listen event who is typing
+// socket.on("server-send-who-is-typing", function (data) {
+//     $("#status").html(data);
+// });
+//
+// // Listen event "Stop Typing"
+// socket.on("server-send-who-is-typing", function () {
+//     $("#status").html("*******************");
+// });
+
 $(document).ready(function () {
     $("#loginForm").show();
     $("#chatForm").hide();
@@ -34,10 +49,25 @@ $(document).ready(function () {
     });
 
     $("#btnLogout").click(function () {
+        $("#txtMessages").val("");
+        $("#listMessages").val("");
         // Emit to server: I want to logout
         socket.emit("i-want-to-logout");
         $("#chatForm").hide(1000);
-        $("#loginForm").show(2000);
+        $("#loginForm").show(1000);
+
+});
+
+    $("#btnSendMessage").click(function (data) {
+        socket.emit("user-send-message", $("#txtMessages").val());
+        $("#txtMessages").val('');
     });
 
+    // $("#txtMessages").focusin(function () {
+    //     socket.emit("i-am-typing");
+    // });
+    //
+    // $("#txtMessages").focusout(function () {
+    //     socket.emit("stop-typing");
+    // });
 });
