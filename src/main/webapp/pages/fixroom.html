@@ -1,0 +1,245 @@
+<!-- <%@page import="repository.UserRepository"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="entity.*,ws.WSEnd,java.util.List"%> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Room Information</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="fixStyleRoom.css" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="../css/styleChat.css" type="text/css"> -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script src="../js/demo.js" type="text/javascript" charset="utf-8" async defer></script>
+
+
+</head>
+<body>
+	<!-- <%
+		User temp;
+		List<Room> rooms = WSEnd.roomlist;
+		if(session.getAttribute("login")!=null){
+			UserRepository userRepository  = WSEnd.userRepository;
+			temp = userRepository.getUserByUserName((String) session.getAttribute("username"));
+			
+		}
+		else{
+			temp = (User) request.getAttribute("user");
+		}
+		if(temp==null){
+			response.sendRedirect("/BTLCNPM/");
+		}
+	%> -->
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col-sm-2 userInformation">
+				<!-- Information of user -->
+				<div class="row userInfor">
+					<center>
+						<img class="img-responsive avatar" src="bk-logo.png" style="border: solid 1px">
+					</center>
+					<!-- <h2 class="userName"><%=temp.getFullName()%></h2> -->
+					<h2 class="userName">Test</h2>
+
+					<center>
+						<input type="file" style="display: none" id="fileChooser">
+						<button onclick="document.getElementById('fileChooser').click();">Choose avatar</button><br>
+						<button id="uploadImg">Upload</button>
+					</center>
+					<span id="urlImage">Test</span> <br>
+					<button id="btnChangePass" onclick="return onChangePass()"><h4>Change Password</h4></button> <br>
+					<input type="password" placeholder="Enter your password" class="changePassForm" id="oldPass"><br> 
+					<input type="password" placeholder="Enter new password" class="changePassForm" id="newPass"><br> 
+					<input type="password" placeholder="Re-enter new password" class="changePassForm" id="reNewPass"><br> 
+					<button id="applyChangePass" class="changePassForm">Apply</button>
+				</div>
+
+				<!-- list Room -->
+				<div class="row listRoom">
+					<!-- <% for (int i=0;i<rooms.size();i++){ %> -->
+						<!-- <div class="row room" id="roomHust">
+							<img src=<%=rooms.get(i).getLogourl() %> class="img-circle img-responsive logoRoom"> 
+							<span class="titleRoom"><h1><%=rooms.get(i).getName() %></h1></span> 
+							<span class="numbOnline">Online: <%=rooms.get(i).getOnlinelist().size() %></span>
+						</div> -->
+					<!-- <%} %> -->
+
+					<div class="row room" id="roomHust">
+						<img src="../logo/bk-logo.png" class="img-circle img-responsive logoRoom"> 
+						<span class="titleRoom"><h1>Title</h1></span> 
+						<span class="numbOnline">Online: 0</span>
+					</div>
+						
+					<div class="row room" id="roomNeu">
+						<img src="../logo/kt-logo.png" class="img-circle img-responsive logoRoom"> 
+						<span class="titleRoom"><h1>NEU</h1></span> 
+						<span class="numbOnline">Online:0</span>
+					</div>
+
+					<div class="row room" id="roomOther">
+						<img src="../logo/other-logo.jpg" class="img-circle img-responsive logoRoom"> 
+						<span class="titleRoom"><h1>OTHER</h1></span> 
+						<span class="numbOnline">Online:0</span>
+					</div>
+
+					
+
+				</div>
+
+			</div>
+
+			<!-- Chat -->
+			<div class="col-sm-8">
+				
+				<div class="chat_window">
+        			<!-- Menu Area -->
+        			<div class="top_menu">
+            			<div class="buttons">
+                			<div class="button close"></div>
+                			<div class="button minimize"></div>
+                			<div class="button maximize"></div>
+            			</div>
+            			<div class="title">Welcome to Chat Room</div>
+        			</div>
+
+        			<!-- Chat Area -->
+        			<ul class="messages">
+
+        			</ul>
+
+        			<!-- Bottom Area - Text Field -->
+        			<div class="bottom_wrapper clearfix">
+            			<div class="message_input_wrapper">
+                			<input class="message_input" placeholder="Type your message here...">
+            			</div>
+						
+
+            			<div class="send_message">
+                			<div class="icon"></div>
+                			<div class="text">Send</div>
+           				</div>
+
+           				<div class="send_icon">	
+          					<div class="text">
+          						<p><span class="glyphicon glyphicon-heart listIcon" id="btnIcon"></span></p> 
+          					</div>
+           					
+           				</div>
+						
+						
+
+        			</div>
+    			</div>
+
+    			<div class="message_template">
+        			<li class="message">
+            			<div class="avatar"></div>
+            			<div class="text_wrapper">
+                			<div class="text"></div>
+            			</div>
+       				 </li>
+    			</div>
+
+    			<div id="myModal" class="modal">
+
+  					<!-- Modal content -->
+  					<ul class="modal-content">
+    					<span class="close" id="btnCloseIcon">&times;</span>
+    					<!-- <p>Some text in the Modal..</p> -->
+  					</ul>
+
+				</div>
+
+				
+    		
+
+			</div>
+
+
+			<!-- Online List -->
+			<div class="col-sm-2">
+				<div class="onlineList" >
+
+					
+				</div>
+			</div>
+]
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+		var isHide = true;
+		function onChangePass() {
+			var $changePassForm = $('.changePassForm');
+			if (isHide) {
+				$changePassForm.show();
+				isHide = false;
+
+			}
+			else {
+				$changePassForm.hide();
+				isHide = true;
+			}
+		}
+
+	</script>
+
+	<script>
+		// Get the modal
+		var modal = document.getElementById('myModal');
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("btnIcon");
+		var btnCloseIcon = document.getElementById("btnCloseIcon");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+    		modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		btnCloseIcon.onclick = function() {
+    		modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+    		if (event.target == modal) {
+        		modal.style.display = "none";
+    		}
+		}
+	</script>
+
+
+</body>
+</html>
