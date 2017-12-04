@@ -120,6 +120,8 @@ $(document).ready(function () {
                 room: Number(roomId)
             }
             webSocket.send(JSON.stringify(changeRoomJSON));
+            $('.messages').empty();
+            $('.chat_window').show();
         });
         
         webSocket.onopen = function (event) {
@@ -164,8 +166,10 @@ $(document).ready(function () {
                 var size = jsonFromServer.size;
                 var mess = jsonFromServer.message;
 
-                $('#avatar:last').css('background-image', 'url(' + avatarUrlSend + ')');
-                
+                // $('.avatarUser:last').css('background-image', 'url(' + avatarUrlSend + ')');
+                $('.avatarUser:last').attr({
+                    src: avatarUrlSend    
+                });
                 // if (mess === "Online!") {
                 //     listUserOnline.push({
                 //         avatarurl: avatarUrlSend,

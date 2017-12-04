@@ -9,18 +9,20 @@ body {
 */
 
 .chat_window {
-    position: absolute;
+    /*position: absolute;*/
+    position: relative;
     width: calc(100% - 20px);
     max-width: 800px;
-    height: 500px;
+    height: 587px;
     border-radius: 10px;
     background-color: #fff;
     left: 50%;
     top: 50%;
-    transform: translateX(-50%) translateY(15%);
+    transform: translateX(-50%) translateY(4%);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     background-color: #f8f8f8;
     overflow: hidden;
+    display: none;
 }
 
 .top_menu {
@@ -61,7 +63,7 @@ body {
     list-style: none;
     padding: 20px 10px 0 10px;
     margin: 0;
-    height: 347px;
+    height: 427px;
     overflow: scroll;
 }
 .messages .message {
@@ -111,6 +113,14 @@ body {
     border-radius: 50%;
     display: inline-block;
 }
+.messages .message .avatarUserSend .avatarUser {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+    border: solid 1px black;
+}
+
 .messages .message .text_wrapper {
     display: inline-block;
     padding: 20px;
@@ -154,7 +164,7 @@ body {
     height: 50px;
     border-radius: 25px;
     border: 1px solid #bcbdc0;
-    width: calc(100% - 300px);
+    width: calc(100% - 130px);
     position: relative;
     padding: 0 20px;
 }
@@ -168,20 +178,21 @@ body {
     color: gray;
 }
 .bottom_wrapper .send_message {
-    width: 140px;
+    width: 50px;
     height: 50px;
     display: inline-block;
-    border-radius: 50px;
-    background-color: #a3d063;
-    border: 2px solid #a3d063;
+    border-radius: 50%;
+    background-color: #4080ff;
+    border: 2px solid #4080ff;
     color: #fff;
     cursor: pointer;
     transition: all 0.2s linear;
     text-align: center;
+    padding-right: 6px;
     float: right;
 }
 .bottom_wrapper .send_message:hover {
-    color: #a3d063;
+    color: #4080ff;
     background-color: #fff;
 }
 .bottom_wrapper .send_message .text {
@@ -197,8 +208,8 @@ body {
     height: 50px;
     display: inline-block;
     border-radius: 50px;
-    background-color: #a3d063;
-    border: 2px solid #a3d063;
+    background-color: #4080ff;
+    border: 2px solid #4080ff;
     color: #fff;
     cursor: pointer;
     transition: all 0.2s linear;
@@ -208,7 +219,7 @@ body {
 }
 
 .bottom_wrapper .send_icon:hover {
-    color: #a3d063;
+    color: #4080ff;
     background-color: #fff;
 }
 .bottom_wrapper .send_icon.text {

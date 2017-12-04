@@ -43,31 +43,48 @@
 					<!-- Choose avatar Area -->
 					<center>
 						<input type="file" style="display: none" id="fileChooser">
-						<button onclick="document.getElementById('fileChooser').click();">Choose avatar</button><br>
+						<button id="chooseImg" onclick="document.getElementById('fileChooser').click();">Choose avatar</button><br>
 						<button id="uploadImg">Upload</button>
 					</center>
 					<span id="urlImage">Test</span> <br>
-					<button id="btnChangePass" onclick="return onChangePass()"><h4>Change Password</h4></button> <br>
-					<input type="password" placeholder="Enter your password" class="changePassForm" id="oldPass"><br> 
-					<input type="password" placeholder="Enter new password" class="changePassForm" id="newPass"><br> 
-					<input type="password" placeholder="Re-enter new password" class="changePassForm" id="reNewPass"> <br>
+					<button id="btnChangePass" onclick="return onChangePass()"><h4>Change Password</h4></button><br>
+					<input type="password" placeholder="Enter your password" class="changePassForm" id="oldPass"><br>
+					<input type="password" placeholder="Enter new password" class="changePassForm" id="newPass"><br>
+					<input type="password" placeholder="Re-enter new password" class="changePassForm" id="reNewPass"><br>
 					<button id="applyChangePass" class="changePassForm">Apply</button>
 				</div>
 				
 				<!-- List Room -->
 				<div class="row listRoom">
+					<div class="row titleList">
+						<h3>List Room</h3>
+					</div>
+
+					<div class="rooms">
 					<%
 						for (int i = 0; i < rooms.size(); i++) {
 					%>
 						<div class="row room" id="<%=i%>">
-							<img src=<%=rooms.get(i).getLogourl()%> class="img-circle img-responsive logoRoom">
+							<div class="row">
+								<img src=<%=rooms.get(i).getLogourl()%> class="img-circle img-responsive logoRoom col-sm-6">
+								<h3 class="col-sm-6"> <span class="titleRoom"><%=i%>: <%=rooms.get(i).getName()%></span></h3>
+							</div>
+							
+							<div class="row footRoom">
+								<span class="description"><strong><%=rooms.get(i).getDescription()%></strong></span>
+								<span class="numbOnline"><br>Online: <%=rooms.get(i).getNumberonline()%></span>
+							</div>
+
+
+							<!-- <img src=<%=rooms.get(i).getLogourl()%> class="img-circle img-responsive logoRoom">
 							<h1> <span class="titleRoom"><%=i%>: <%=rooms.get(i).getName()%></span></h1>
 							<span class="description"><strong>Online: <%=rooms.get(i).getDescription()%></strong></span>
-							<span class="numbOnline"><br>Online: <%=rooms.get(i).getNumberonline()%></span>
+							<span class="numbOnline"><br>Online: <%=rooms.get(i).getNumberonline()%></span> -->
 						</div>
 					<%
 						}
 					%>
+					</div>
 				</div>	
 			</div>
 
@@ -101,7 +118,7 @@
 						<!-- Send Message Button -->
             			<div class="send_message">
                 			<div class="iconButtonSend"></div>
-                			<div class="text">Send</div>
+                			<div class="text"><span class="glyphicon glyphicon-send"></span></div>
            				</div>
 						
 						<!-- Send Icon Button -->
@@ -117,7 +134,9 @@
 
     			<div class="message_template">
         			<li class="message">
-            			<div class="avatarUserSend"></div>
+            			<div class="avatarUserSend">
+            				<img class="img-circle img-responsive avatarUser">
+            			</div>
             			<!-- <img class="img-circle img-responsive avatar" id="avataruser"></div> -->
             			<div class="text_wrapper">
                 			<div class="text"></div>
