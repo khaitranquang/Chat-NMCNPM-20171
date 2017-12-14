@@ -312,67 +312,60 @@ body {
     cursor: pointer;
 }
 
+/* Style of listUserOnline */
+.onlineListWrapper {
+    background-color: #2c3338;
+    padding: 4px 0;
+}
 .onlineList {
-   /* padding-top: */
-   /* width: 100% ;*/
-    height: 300px;
-    background-color: blue;
-   /* position: fixed;*/
-    /*width: calc(100% - 20px);/**/
-    transform: translateX(0%) translateY(50%);
+    height: 631px;
+    background-color: #2c3338;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
-
-.onlineList {
-    overflow-y: auto;
-}
-
-/*.onlineList */.listUser {
+.listUser {
     padding: 0;
-    margin: 4px;
+    margin-top: 16px;
     list-style: none;
 }
 
-/*.onlineList*/ .listUser .userOnline {
+.listUser .userOnline {
     position: relative;
     clear: both;
     overflow: hidden;
-    margin-bottom: 10px;
     transition: all 0.5s linear;
+    padding-left: 16px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    background-color: #2c3338;
     opacity: 0;
 }
 
-
-
-/*.onlineList */.listUser .userOnline .avatarListUser {
+.listUser .userOnline .avatarListUser {
     float: left;
     width: 56px;
     height: 56px;
     margin-left: 8px;
 }
 
-/*.onlineList*/ .listUser .userOnline .nameListUser {
+.listUser .userOnline .nameListUser {
     float: left;
-    font-size: 22px;
+    font-size: 18px;
     padding-left: 20px;
     padding-top: 12px;
-    color: white;
+    color: #e4e4e4;
 }
 
-/*.onlineList */.listUser .userOnline .nameListUser:hover {
-    color: black;
-    font-size: 28px;
-    background-color: pink;
-}
-
-/*.onlineList*/ .listUser .userOnline.appeared {
+.listUser .userOnline.appeared {
     opacity: 1;
 }
 
-/*.onlineList*/ .listUser .userOnline.appeared:hover {
+.listUser .userOnline.appeared:hover {
     cursor: pointer;
-    background-color: white;
+    background-color: grey;
+    font-weight: bold;
+    color: white;
 }
 
 .user_template {

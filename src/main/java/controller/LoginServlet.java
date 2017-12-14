@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +23,10 @@ public class LoginServlet extends HttpServlet {
 		UserRepository userRepository = (UserRepository) getServletContext().getAttribute("userRepository");
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
+		byte[] bytes = username.getBytes(StandardCharsets.UTF_8);
+		username = new String(bytes, StandardCharsets.UTF_8);
+		bytes = password.getBytes(StandardCharsets.UTF_8);
+		password = new String(bytes, StandardCharsets.UTF_8);
 		HttpSession session = req.getSession();
 		if (userRepository.checkUser(username, password)) {
 			boolean flag = true;
@@ -48,6 +53,7 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("bam");
 		HttpSession session = req.getSession();
 		if (session.getAttribute("login") != null) {
 			resp.sendRedirect("/BTLCNPM/pages/room.jsp");

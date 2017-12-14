@@ -15,7 +15,7 @@ public class RoomRepository {
 	static {
 		try {
 			stm = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/chatcnpm"
+					"jdbc:mysql://localhost:3306/cnpmchat"
 							+ "?autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull",
 					"root", "1234").createStatement();
 		} catch (SQLException e) {

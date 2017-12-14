@@ -20,4 +20,5 @@ public class Icon {
 		this.url = url;
 	}
 	
+		
 }

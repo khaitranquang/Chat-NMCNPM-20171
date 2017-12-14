@@ -7,12 +7,16 @@
 	<meta charset="UTF-8">
 	<title>Room Information</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	
+	<script src="http://localhost:8080/BTLCNPM/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://localhost:8080/BTLCNPM/css/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="http://localhost:8080/BTLCNPM/css/bootstrap.min.css" type="text/css">
 	<link href="http://localhost:8080/BTLCNPM/css/styleRoom.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="http://localhost:8080/BTLCNPM/css/styleChat.css" type="text/css">
-	<script src="http://localhost:8080/BTLCNPM/js/demo.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="http://localhost:8080/BTLCNPM/js/roomEvent.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	<%
@@ -44,14 +48,20 @@
 					<center>
 						<input type="file" style="display: none" id="fileChooser">
 						<button id="chooseImg" onclick="document.getElementById('fileChooser').click();">Choose avatar</button><br>
+						<span id="urlImage" style="color: #e2e2e2"></span> <br>
 						<button id="uploadImg">Upload</button>
 					</center>
-					<span id="urlImage">Test</span> <br>
+
 					<button id="btnChangePass" onclick="return onChangePass()"><h4>Change Password</h4></button><br>
 					<input type="password" placeholder="Enter your password" class="changePassForm" id="oldPass"><br>
 					<input type="password" placeholder="Enter new password" class="changePassForm" id="newPass"><br>
 					<input type="password" placeholder="Re-enter new password" class="changePassForm" id="reNewPass"><br>
 					<button id="applyChangePass" class="changePassForm">Apply</button>
+
+					<form action="/BTLCNPM/logout" method="post" name="form-logout" id="form-logout">
+						<button type="submit" id="btnLogout">Logout</button>
+					</form>
+
 				</div>
 				
 				<!-- List Room -->
@@ -74,12 +84,6 @@
 								<span class="description"><strong><%=rooms.get(i).getDescription()%></strong></span>
 								<span class="numbOnline"><br>Online: <%=rooms.get(i).getNumberonline()%></span>
 							</div>
-
-
-							<!-- <img src=<%=rooms.get(i).getLogourl()%> class="img-circle img-responsive logoRoom">
-							<h1> <span class="titleRoom"><%=i%>: <%=rooms.get(i).getName()%></span></h1>
-							<span class="description"><strong>Online: <%=rooms.get(i).getDescription()%></strong></span>
-							<span class="numbOnline"><br>Online: <%=rooms.get(i).getNumberonline()%></span> -->
 						</div>
 					<%
 						}
@@ -153,6 +157,9 @@
 				</div>
 
 				<div class="icon_template">
+					<!-- <div class="avatarUserSend">
+            			<img class="img-circle img-responsive avatarUser">
+            		</div> -->
 					<li class="icon">
 						<img alt="show icon" class="img-responsive imageIcon">
 					</li>
@@ -162,11 +169,13 @@
 			</div>
 
 			<!-- Online List -->
-			<div class="col-sm-2 onlineList">
-				<div class="row">
-					<ul class="listUser">
+			<div class="col-sm-2 onlineListWrapper">
+				<div class="onlineList">
+					<div class="row">
+						<ul class="listUser">
 					
-					</ul>
+						</ul>
+					</div>
 				</div>
 			</div>
 
