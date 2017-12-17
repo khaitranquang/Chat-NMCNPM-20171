@@ -165,15 +165,20 @@ $(document).ready(function () {
          * Then show message area and list room online
          */
         $room.click(function() {
+        	var titleRoom = $(this).find('.titleRoom').html();
+            var avatarRoomImgUrl = $(this).find('.logoRoom').attr('src');
+            
             roomId = $(this).attr('id');
             var changeRoomJSON = {
                 status:"changeroom",
                 room: Number(roomId)
-            }
+            };
             webSocket.send(JSON.stringify(changeRoomJSON));
-            // $('.listUser').empty();
-            // listUserOnline.splice(0, listUserOnline.length);
             $('.messages').empty();
+            
+            $('.top_menu').find('.title').html(titleRoom);
+            $('.avatarImg').attr('src', avatarRoomImgUrl);
+
             $('.chat_window').show();
         });
 

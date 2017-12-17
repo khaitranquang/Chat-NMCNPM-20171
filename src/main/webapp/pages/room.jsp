@@ -104,6 +104,11 @@
                 			<div class="button minimize"></div>
                 			<div class="button maximize"></div>
             			</div>
+						<!- --------------------- ->
+						<div class="avatarRoom">
+							<img class="img-circle img-responsive avatarImg">
+						</div>
+
             			<div class="title">Welcome to Chat Room</div>
         			</div>
 

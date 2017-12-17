@@ -34,6 +34,7 @@ body {
 .top_menu .buttons {
     margin: 3px 0 0 20px;
     position: absolute;
+    display: none;
 }
 .top_menu .buttons .button {
     width: 16px;
@@ -52,6 +53,19 @@ body {
 .top_menu .buttons .button.maximize {
     background-color: #74d030;
 }
+
+.avatarRoom {
+    margin: -8px 0 0 20px;
+    position: absolute;
+}
+
+.avatarImg {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(82, 82, 82, 0.55);
+    border-radius: 50%;
+}
+
 .top_menu .title {
     text-align: center;
     color: #bcbdc0;
